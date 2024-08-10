@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.calendar.R
 import com.example.calendar.presentation.fragment.CalendarFragment
+import com.example.calendar.presentation.fragment.TaskListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,10 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, CalendarFragment())
+                .commit()
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.task_list_container, TaskListFragment())
                 .commit()
         }
     }

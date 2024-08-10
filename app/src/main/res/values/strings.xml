@@ -8,4 +8,5 @@
     <string name="tue">Tue</string>
     <string name="mon">Mon</string>
     <string name="description">someDescription</string>
+    <string name="delete">Delete</string>
 </resources>
