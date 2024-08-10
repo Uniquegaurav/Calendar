@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calendar.R
+import com.example.calendar.common.Resource
 import com.example.calendar.databinding.FragmentTasksBinding
 import com.example.calendar.domain.repository.TaskRepository
 import com.example.calendar.presentation.adapter.TaskListAdapter
@@ -37,6 +38,25 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks), TaskRepository {
             requireActivity(),
             TaskViewModelProviderFactory(this)
         )[TaskViewModel::class.java]
+
+//        taskViewModel.tasks.observe(viewLifecycleOwner) { response ->
+//            when (response) {
+//                is Resource.Error -> {
+//                    response.errorMessage?.let {
+//                        Log.e("tag", it)
+//                    }
+//                }
+//                is Resource.Loading -> {
+//
+//                }
+//
+//                is Resource.Success -> {
+//                    response.data?.let {
+//                        taskAdapter.differ.submitList(it)
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun setUpRecyclerView() {
