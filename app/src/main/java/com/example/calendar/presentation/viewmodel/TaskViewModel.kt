@@ -18,8 +18,9 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
     }
     fun getAllTasks() = viewModelScope.launch {
         tasks.postValue(Resource.Loading())
-        val response = repository.getAllTasks()
-        tasks.postValue(handleResponse(response))
+        // implement this
+//        val response = repository.getAllTasks()
+//        tasks.postValue(handleResponse(response))
     }
 
     private fun handleResponse(response: Response<Task>): Resource<Task> {

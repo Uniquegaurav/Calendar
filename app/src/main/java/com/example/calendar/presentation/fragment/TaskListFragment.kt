@@ -17,7 +17,7 @@ import com.example.calendar.presentation.viewmodel.TaskViewModel
 import com.example.calendar.presentation.viewmodel.TaskViewModelProviderFactory
 import retrofit2.Response
 
-class TaskListFragment : Fragment(R.layout.fragment_tasks), TaskRepository {
+class TaskListFragment : Fragment(R.layout.fragment_tasks) {
 
     private lateinit var taskAdapter: TaskListAdapter
     private lateinit var binding: FragmentTasksBinding
@@ -36,8 +36,10 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks), TaskRepository {
         setUpRecyclerView()
         taskViewModel = ViewModelProvider(
             requireActivity(),
-            TaskViewModelProviderFactory(this)
+            TaskViewModelProviderFactory(TaskRepository())
         )[TaskViewModel::class.java]
+        dummyTaskForTesting()
+
 
 //        taskViewModel.tasks.observe(viewLifecycleOwner) { response ->
 //            when (response) {
@@ -67,7 +69,12 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks), TaskRepository {
         }
     }
 
-    override fun getAllTasks(): Response<Task> {
-        return Response.success(Task(date = "343",id ="df", description = ""))
+    private fun dummyTaskForTesting() {
+
+        var taskList = mutableListOf<Task>()
+        taskList.add(Task("1", date = "August 24", "submission task"))
+        taskList.add(Task("2", date = "September 23", "task2"))
+        taskList.add(Task("3", date = "August 31", "task3"))
+        taskAdapter.differ.submitList(taskList)
     }
 }
