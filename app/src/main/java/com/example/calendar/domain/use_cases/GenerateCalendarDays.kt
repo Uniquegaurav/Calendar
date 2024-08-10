@@ -13,7 +13,7 @@ class GenerateCalendarDays() {
         val calendarList = mutableListOf<Day>()
         for (i in 0..41) {
             if (i > firstDayOfMonth && i < firstDayOfMonth + daysInMonth) {
-                calendarList.add(Day(i.toString()))
+                calendarList.add(Day((i-firstDayOfMonth).toString()))
             } else {
                 calendarList.add(Day(""))
             }

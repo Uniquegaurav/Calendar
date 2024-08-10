@@ -2,95 +2,145 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
+            android:padding="16dp">
+
+            <ImageButton
+                android:id="@+id/prev_month_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/description"
+                android:scaleType="centerInside"
+                android:layout_gravity="start"
+                android:src="@drawable/left" />
+
+            <TextView
+                android:id="@+id/current_month"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/current_year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/next_month_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/description"
+                android:scaleType="centerInside"
+                android:layout_gravity="end"
+                android:src="@drawable/right" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/days_of_week_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="top">
+            android:layout_gravity="top"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/mon"
-                android:gravity="center"
-                android:layout_marginEnd="4dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/tue"
-                android:gravity="center"
-                android:layout_marginEnd="4dp"
-                android:padding="8dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/wed"
-                android:gravity="center"
-                android:layout_marginEnd="4dp"
-                android:padding="8dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/thu"
-                android:gravity="center"
-                android:layout_marginEnd="4dp"
-                android:padding="8dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/fri"
-                android:gravity="center"
-                android:layout_marginEnd="4dp"
-                android:padding="8dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/sat"
-                android:gravity="center"
-                android:layout_marginEnd="4dp"
-                android:padding="8dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sun"
-                android:gravity="center"
                 android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:padding="8dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:text="@string/sun"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -98,8 +148,10 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             tools:listitem="@layout/item_calendar_day" />
 
-    </FrameLayout>
+
+    </LinearLayout>
+
 </layout>
