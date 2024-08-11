@@ -9,7 +9,7 @@
     <string name="mon">Mon</string>
     <string name="description">someDescription</string>
     <string name="delete">Delete</string>
-    <string name="dialog_title">Select an Action</string>
+    <string name="dialog_title">Creating A Task</string>
     <string name="dialog_message">Would you like to create a task for %1$s?</string>
     <string name="create_task">Create Task</string>
     <string name="cancel">Cancel</string>

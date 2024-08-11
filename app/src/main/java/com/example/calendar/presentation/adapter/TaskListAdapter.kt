@@ -32,7 +32,9 @@ class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
         holder.binding.apply {
             taskDate.text =
                 (taskItem.taskDetails?.date ?: "Unknown Date").toString()
+            taskTitle.text = (taskItem.taskDetails?.title ?: "No Title")
             taskDescription.text = taskItem.taskDetails?.description ?: "No Description"
+
             deleteButton.setOnClickListener {
                 onDeleteClickListener?.invoke(taskItem)
             }
