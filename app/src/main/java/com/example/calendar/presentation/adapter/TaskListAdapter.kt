@@ -30,17 +30,15 @@ class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
     override fun onBindViewHolder(holder: TaskListAdapter.TaskViewHolder, position: Int) {
         val taskItem = differ.currentList[position]
         holder.binding.apply {
-            taskDate.text = taskItem.task.date.toString()
-            taskDescription.text = taskItem.task.description
+            taskDate.text =
+                (taskItem.taskDetails?.date ?: "Unknown Date").toString()
+            taskDescription.text = taskItem.taskDetails?.description ?: "No Description"
             deleteButton.setOnClickListener {
-                onDeleteClickListener.let {
-                    if (it != null) {
-                        it(taskItem)
-                    }
-                }
+                onDeleteClickListener?.invoke(taskItem)
             }
         }
     }
+
 
     private var onDeleteClickListener: ((Task) -> Unit)? = null
     fun setOnItemDeleteClickListener(listener: (Task) -> Unit) {

@@ -1,15 +1,16 @@
 package com.example.calendar.data.remote.dto
 
+import android.util.Log
 import com.example.calendar.domain.model.TaskDetails
-import com.google.gson.annotations.SerializedName
 
 data class TaskDetailsDto(
-    @SerializedName("date") val date: Int,
-    @SerializedName("title") val title: String,
-    @SerializedName("description") val description: String
+    val date: Long?,
+    val title: String?,
+    val description: String?
 )
 
 fun TaskDetailsDto.toTaskDetails(): TaskDetails {
+    Log.d("each task detail", title.toString())
     return TaskDetails(
         date = date,
         title = title,

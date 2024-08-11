@@ -41,7 +41,6 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks) {
             when (response) {
                 is Resource.Error -> {
                     response.message?.let {
-                        Log.e("tag", it)
                     }
                 }
 
@@ -50,7 +49,6 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks) {
                 }
 
                 is Resource.Success -> {
-                    Log.d("tasks success" , taskViewModel.tasks.toString())
                     response.data?.let {
                         taskAdapter.differ.submitList(it)
                     }

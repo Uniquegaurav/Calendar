@@ -3,7 +3,7 @@ package com.example.calendar.domain.model
 import com.example.calendar.data.remote.dto.TaskDetailsDto
 
 data class TaskDetails(
-    val date: Int, val title: String, val description: String
+    val date: Long?, val title: String?, val description: String?
 )
 
 fun TaskDetails.toTaskDetailsDto(): TaskDetailsDto {

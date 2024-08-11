@@ -1,7 +1,5 @@
 package com.example.calendar.data.remote.api
-
 import com.example.calendar.data.remote.dto.Data
-import com.example.calendar.data.remote.dto.TaskDto
 import com.example.calendar.data.remote.request.DeleteCalendarTaskRequest
 import com.example.calendar.data.remote.request.GetCalendarTaskListRequest
 import com.example.calendar.data.remote.request.StoreCalendarTaskRequest
@@ -13,7 +11,7 @@ interface TasksAPI {
     @POST("api/storeCalendarTask")
     suspend fun storeCalendarTask(@Body request: StoreCalendarTaskRequest)
 
-    @POST("api/getCalendarTaskLists")
+    @POST("api/getCalendarTaskList")
     suspend fun getCalendarTaskLists(@Body request: GetCalendarTaskListRequest): Response<Data>
 
     @POST("api/deleteCalendarTask")
