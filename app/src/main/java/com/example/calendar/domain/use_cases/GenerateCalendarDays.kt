@@ -2,8 +2,9 @@ package com.example.calendar.domain.use_cases
 
 import com.example.calendar.presentation.model.Day
 import java.util.Calendar
+import javax.inject.Inject
 
-class GenerateCalendarDays() {
+class GenerateCalendarDays @Inject constructor() {
     operator fun invoke(month: Int, year: Int): MutableList<Day> {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, 1)

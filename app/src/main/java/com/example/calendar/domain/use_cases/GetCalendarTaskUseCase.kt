@@ -1,14 +1,12 @@
 package com.example.calendar.domain.use_cases
-
 import com.example.calendar.common.Resource
-import com.example.calendar.data.remote.dto.toData
 import com.example.calendar.data.remote.dto.toTask
 import com.example.calendar.data.remote.request.GetCalendarTaskListRequest
-import com.example.calendar.domain.model.Data
 import com.example.calendar.domain.model.Task
 import com.example.calendar.domain.repository.TaskRepository
-import java.io.IOException
+import java.lang.Exception
 import javax.inject.Inject
+import kotlin.random.Random
 
 class GetCalendarTaskUseCase @Inject constructor(private val repository: TaskRepository) {
     suspend operator fun invoke(): Resource<List<Task>> {
@@ -16,7 +14,7 @@ class GetCalendarTaskUseCase @Inject constructor(private val repository: TaskRep
         try {
             val response = repository.getCalendarTaskLists(
                 GetCalendarTaskListRequest(
-                    userId = 1,
+                    userId = Random.nextInt(),
                 )
             )
             return if (response.isSuccessful && response.body() != null) {
@@ -28,7 +26,8 @@ class GetCalendarTaskUseCase @Inject constructor(private val repository: TaskRep
                 )
             }
 
-        } catch (e: IOException) {
+        }
+        catch (e: Exception) {
             return Resource.Error(
                 message = e.localizedMessage
                     ?: "Couldn't reach server. Check your internet connection."

@@ -3,9 +3,13 @@ package com.example.calendar.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.calendar.domain.use_cases.GenerateCalendarDays
 import com.example.calendar.presentation.model.Day
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Calendar
+import javax.inject.Inject
 
-class CalendarViewModel : ViewModel() {
+@HiltViewModel
+class CalendarViewModel @Inject constructor(private val generateCalendarDays: GenerateCalendarDays) :
+    ViewModel() {
     private val calendar: Calendar = Calendar.getInstance()
     var currentMonth: Int
     var currentYear: Int
@@ -27,7 +31,6 @@ class CalendarViewModel : ViewModel() {
     }
 
     fun getCalendarDays(calendarMonth: Int, calendarYear: Int): MutableList<Day> {
-        val generateCalendarDays = GenerateCalendarDays()
         return generateCalendarDays(calendarMonth, calendarYear)
     }
 }

@@ -19,7 +19,7 @@ class TaskViewModel @Inject constructor(
     private val deleteCalendarTaskUseCase: DeleteCalendarTaskUseCase
 ) : ViewModel() {
 
-   val tasks: MutableLiveData<Resource<List<Task>>> = MutableLiveData()
+    val tasks: MutableLiveData<Resource<List<Task>>> = MutableLiveData()
 
     init {
         getAllTasks()

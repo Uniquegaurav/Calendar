@@ -13,7 +13,9 @@ import com.example.calendar.common.Resource
 import com.example.calendar.databinding.FragmentTasksBinding
 import com.example.calendar.presentation.adapter.TaskListAdapter
 import com.example.calendar.presentation.viewmodel.TaskViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TaskListFragment : Fragment(R.layout.fragment_tasks) {
 
     private lateinit var taskAdapter: TaskListAdapter

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,7 +18,11 @@ import com.example.calendar.presentation.mapper.Mapper
 import com.example.calendar.presentation.model.Day
 import com.example.calendar.presentation.viewmodel.CalendarViewModel
 import com.example.calendar.presentation.viewmodel.TaskViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.random.Random
 
+
+@AndroidEntryPoint
 class CalendarFragment : Fragment(R.layout.fragment_calendar) {
 
     private lateinit var calendarAdapter: CalendarAdapter
@@ -69,7 +72,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             setPositiveButton(R.string.create_task) { dialog, _ ->
                 val title = dialogViewBinding.taskTitle.text.toString()
                 val description = dialogViewBinding.taskDescription.text.toString()
-                taskViewModel.addTask(Task(1, title, description))
+                taskViewModel.addTask(Task(Random.nextInt(), title, description))
                 dialog.dismiss()
             }
             setNegativeButton(R.string.cancel) { dialog, _ ->
