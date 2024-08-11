@@ -1,7 +1,6 @@
 package com.example.calendar.domain.use_cases
 
 import com.example.calendar.presentation.model.Day
-import java.time.Year
 import java.util.Calendar
 
 class GenerateCalendarDays() {

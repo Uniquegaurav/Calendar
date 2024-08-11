@@ -13,15 +13,18 @@ import com.example.calendar.R
 import com.example.calendar.common.Constants
 import com.example.calendar.databinding.DialogTaskBinding
 import com.example.calendar.databinding.FragmentCalendarBinding
+import com.example.calendar.domain.model.Task
 import com.example.calendar.presentation.adapter.CalendarAdapter
 import com.example.calendar.presentation.mapper.Mapper
 import com.example.calendar.presentation.model.Day
 import com.example.calendar.presentation.viewmodel.CalendarViewModel
+import com.example.calendar.presentation.viewmodel.TaskViewModel
 
 class CalendarFragment : Fragment(R.layout.fragment_calendar) {
 
     private lateinit var calendarAdapter: CalendarAdapter
     private lateinit var calendarViewModel: CalendarViewModel
+    private lateinit var taskViewModel: TaskViewModel
     private lateinit var binding: FragmentCalendarBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +38,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         calendarViewModel = ViewModelProvider(requireActivity())[CalendarViewModel::class.java]
+        taskViewModel = ViewModelProvider(requireActivity())[TaskViewModel::class.java]
         setUpRecyclerView()
         updateCalendar()
         setListeners()
@@ -52,11 +56,11 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
         }
         calendarAdapter.setOnItemClickListener {
             if (it.day.isNotEmpty())
-                showAlertDialog(it)
+                showAlertDialog(it, taskViewModel)
         }
     }
 
-    private fun showAlertDialog(day: Day) {
+    private fun showAlertDialog(day: Day, taskViewModel: TaskViewModel) {
         val dialogViewBinding = DialogTaskBinding.inflate(LayoutInflater.from(requireContext()))
         AlertDialog.Builder(requireContext()).apply {
             setTitle(R.string.dialog_title)
@@ -65,7 +69,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             setPositiveButton(R.string.create_task) { dialog, _ ->
                 val title = dialogViewBinding.taskTitle.text.toString()
                 val description = dialogViewBinding.taskDescription.text.toString()
-//                calendarViewModel.createTaskForDay(day, title, description)
+                taskViewModel.addTask(Task(1, title, description))
                 dialog.dismiss()
             }
             setNegativeButton(R.string.cancel) { dialog, _ ->

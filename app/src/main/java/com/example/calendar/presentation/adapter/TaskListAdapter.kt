@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calendar.databinding.ItemTaskBinding
-import com.example.calendar.presentation.model.Task
+import com.example.calendar.domain.model.Task
 
 class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
 
@@ -30,9 +30,21 @@ class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
     override fun onBindViewHolder(holder: TaskListAdapter.TaskViewHolder, position: Int) {
         val task = differ.currentList[position]
         holder.binding.apply {
-            taskDate.text = task.date
+            taskDate.text = task.title
             taskDescription.text = task.description
+            deleteButton.setOnClickListener {
+                onDeleteClickListener.let {
+                    if (it != null) {
+                        it(task)
+                    }
+                }
+            }
         }
+    }
+
+    private var onDeleteClickListener: ((Task) -> Unit)? = null
+    fun setOnItemDeleteClickListener(listener: (Task) -> Unit) {
+        onDeleteClickListener = listener
     }
 
     private val differCallBack = object : DiffUtil.ItemCallback<Task>() {

@@ -1,4 +1,4 @@
-package com.example.calendar.data.remote.requestmodel
+package com.example.calendar.data.remote.request
 
 data class DeleteCalendarTaskRequest(
     val userId: Int,

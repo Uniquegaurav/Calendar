@@ -1,4 +1,4 @@
-package com.example.calendar.data.remote.requestmodel
+package com.example.calendar.data.remote.request
 import com.example.calendar.data.remote.dto.TaskDto
 
 data class StoreCalendarTaskRequest(

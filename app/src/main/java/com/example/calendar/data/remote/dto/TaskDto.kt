@@ -1,9 +1,15 @@
 package com.example.calendar.data.remote.dto
 
-import com.google.gson.annotations.SerializedName
+import com.example.calendar.domain.model.Task
 
 data class TaskDto(
-    @SerializedName("id") val id: Int,
-    @SerializedName("title") val title: String,
-    @SerializedName("description") val description: String
+    val id: Int, val title: String, val description: String
 )
+
+fun TaskDto.toTask(): Task {
+    return Task(
+        id = id,
+        title = title,
+        description = description
+    )
+}
