@@ -13,6 +13,7 @@ import com.example.calendar.common.Constants
 import com.example.calendar.databinding.DialogTaskBinding
 import com.example.calendar.databinding.FragmentCalendarBinding
 import com.example.calendar.domain.model.Task
+import com.example.calendar.domain.model.TaskDetails
 import com.example.calendar.presentation.adapter.CalendarAdapter
 import com.example.calendar.presentation.mapper.Mapper
 import com.example.calendar.presentation.model.Day
@@ -72,7 +73,16 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             setPositiveButton(R.string.create_task) { dialog, _ ->
                 val title = dialogViewBinding.taskTitle.text.toString()
                 val description = dialogViewBinding.taskDescription.text.toString()
-                taskViewModel.addTask(Task(Random.nextInt(), title, description))
+                taskViewModel.addTask(
+                    Task(
+                        taskId = Random.nextInt(1, 101),
+                        task = TaskDetails(
+                            date = day.day.toInt(),
+                            title = title,
+                            description = description
+                        )
+                    )
+                )
                 dialog.dismiss()
             }
             setNegativeButton(R.string.cancel) { dialog, _ ->

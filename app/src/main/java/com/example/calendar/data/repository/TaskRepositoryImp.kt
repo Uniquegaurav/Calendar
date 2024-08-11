@@ -1,7 +1,7 @@
 package com.example.calendar.data.repository
 
 import com.example.calendar.data.remote.api.TasksAPI
-import com.example.calendar.data.remote.dto.DataDto
+import com.example.calendar.data.remote.dto.Data
 import com.example.calendar.data.remote.request.DeleteCalendarTaskRequest
 import com.example.calendar.data.remote.request.GetCalendarTaskListRequest
 import com.example.calendar.data.remote.request.StoreCalendarTaskRequest
@@ -15,7 +15,7 @@ class TaskRepositoryImp @Inject constructor(private val api: TasksAPI) : TaskRep
         return api.storeCalendarTask(storeCalendarTaskRequest)
     }
 
-    override suspend fun getCalendarTaskLists(getCalendarTaskListRequest: GetCalendarTaskListRequest): Response<List<DataDto>> {
+    override suspend fun getCalendarTaskLists(getCalendarTaskListRequest: GetCalendarTaskListRequest): Response<Data> {
         return api.getCalendarTaskLists(getCalendarTaskListRequest)
     }
 

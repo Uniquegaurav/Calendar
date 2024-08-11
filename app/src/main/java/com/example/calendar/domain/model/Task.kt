@@ -1,15 +1,13 @@
 package com.example.calendar.domain.model
 
+import com.example.calendar.data.remote.dto.TaskDetailsDto
 import com.example.calendar.data.remote.dto.TaskDto
 
-data class Task(
-    val id: Int, val title: String, val description: String
-)
+data class Task(val taskId: Int, val task: TaskDetails)
 
 fun Task.toTaskDto(): TaskDto {
     return TaskDto(
-        id = id,
-        title = title,
-        description = description
+        taskId = taskId,
+        task = task.toTaskDetailsDto()
     )
 }

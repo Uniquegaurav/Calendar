@@ -28,14 +28,14 @@ class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TaskListAdapter.TaskViewHolder, position: Int) {
-        val task = differ.currentList[position]
+        val taskItem = differ.currentList[position]
         holder.binding.apply {
-            taskDate.text = task.title
-            taskDescription.text = task.description
+            taskDate.text = taskItem.task.date.toString()
+            taskDescription.text = taskItem.task.description
             deleteButton.setOnClickListener {
                 onDeleteClickListener.let {
                     if (it != null) {
-                        it(task)
+                        it(taskItem)
                     }
                 }
             }
@@ -49,7 +49,7 @@ class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.taskId == newItem.taskId
         }
 
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {

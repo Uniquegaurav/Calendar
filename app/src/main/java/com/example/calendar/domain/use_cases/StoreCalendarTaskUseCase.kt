@@ -1,5 +1,6 @@
 package com.example.calendar.domain.use_cases
 
+import com.example.calendar.common.Constants
 import com.example.calendar.data.remote.request.StoreCalendarTaskRequest
 import com.example.calendar.domain.model.Task
 import com.example.calendar.domain.model.toTaskDto
@@ -10,7 +11,7 @@ class StoreCalendarTaskUseCase @Inject constructor(private val repository: TaskR
     suspend operator fun invoke(task: Task) {
         repository.storeCalendarTask(
             StoreCalendarTaskRequest(
-                userId = 1,
+                userId = Constants.TEMP_USER_ID,
                 task = task.toTaskDto()
             )
         )

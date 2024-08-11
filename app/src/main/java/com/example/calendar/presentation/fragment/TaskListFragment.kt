@@ -36,6 +36,7 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks) {
         taskViewModel = ViewModelProvider(
             requireActivity(),
         )[TaskViewModel::class.java]
+        Log.d("tasks" , taskViewModel.tasks.toString())
         taskViewModel.tasks.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Error -> {
@@ -49,6 +50,7 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks) {
                 }
 
                 is Resource.Success -> {
+                    Log.d("tasks success" , taskViewModel.tasks.toString())
                     response.data?.let {
                         taskAdapter.differ.submitList(it)
                     }
@@ -56,7 +58,7 @@ class TaskListFragment : Fragment(R.layout.fragment_tasks) {
             }
         }
         taskAdapter.setOnItemDeleteClickListener {
-            taskViewModel.deleteTask(it.id)
+            taskViewModel.deleteTask(it.taskId)
         }
     }
 

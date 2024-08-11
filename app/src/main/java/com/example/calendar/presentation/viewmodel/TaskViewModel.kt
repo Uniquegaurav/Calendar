@@ -1,5 +1,6 @@
 package com.example.calendar.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,11 +30,14 @@ class TaskViewModel @Inject constructor(
         tasks.postValue(Resource.Loading())
         val response = getCalendarTaskUseCase()
         tasks.postValue(response)
+        Log.d("get task called" , tasks.value?.data.toString())
     }
 
     fun addTask(task: Task) = viewModelScope.launch {
+        Log.d("add task called" , task.toString())
         tasks.postValue(Resource.Loading())
         storeCalendarTaskUseCase(task)
+        Log.d("add task called 2" , tasks.value?.data.toString())
     }
 
     fun deleteTask(taskId: Int) = viewModelScope.launch {
