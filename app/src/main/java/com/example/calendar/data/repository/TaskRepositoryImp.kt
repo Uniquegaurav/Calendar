@@ -1,13 +1,26 @@
 package com.example.calendar.data.repository
 
+import com.example.calendar.data.remote.api.TasksAPI
+import com.example.calendar.data.remote.dto.DataDto
+import com.example.calendar.data.remote.requestmodel.DeleteCalendarTaskRequest
+import com.example.calendar.data.remote.requestmodel.GetCalendarTaskListRequest
+import com.example.calendar.data.remote.requestmodel.StoreCalendarTaskRequest
 import com.example.calendar.domain.repository.TaskRepository
-import com.example.calendar.presentation.model.Task
-import retrofit2.Response
+import javax.inject.Inject
 
 
-// Not using this approach because of time constraints
-//class TaskRepositoryImp : TaskRepository {
-//    override fun getAllTasks(): Response<Task> {
-//        return Response.success(Task(date = "343",id ="df", description = ""))
-//    }
-//}
+class TaskRepositoryImp @Inject constructor(private val api: TasksAPI) : TaskRepository {
+    override suspend fun storeCalendarTask(storeCalendarTaskRequest: StoreCalendarTaskRequest) {
+        return api.storeCalendarTask(storeCalendarTaskRequest)
+    }
+
+    override suspend fun getCalendarTaskLists(getCalendarTaskListRequest: GetCalendarTaskListRequest): List<DataDto> {
+        return api.getCalendarTaskLists(getCalendarTaskListRequest)
+    }
+
+    override suspend fun deleteCalendarTask(deleteCalendarTaskRequest: DeleteCalendarTaskRequest) {
+        return api.deleteCalendarTask(deleteCalendarTaskRequest)
+    }
+
+
+}

@@ -60,7 +60,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
 
     //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.45")
+    implementation ("com.google.dagger:hilt-android:2.49")
     kapt ("com.google.dagger:hilt-android-compiler:2.37")
     implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     kapt ("androidx.hilt:hilt-compiler:1.2.0")

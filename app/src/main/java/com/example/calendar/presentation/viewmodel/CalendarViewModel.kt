@@ -1,6 +1,5 @@
 package com.example.calendar.presentation.viewmodel
 
-import android.icu.text.CaseMap.Title
 import androidx.lifecycle.ViewModel
 import com.example.calendar.domain.use_cases.GenerateCalendarDays
 import com.example.calendar.presentation.model.Day
@@ -31,9 +30,4 @@ class CalendarViewModel : ViewModel() {
         val generateCalendarDays = GenerateCalendarDays()
         return generateCalendarDays(calendarMonth, calendarYear)
     }
-
-    fun createTaskForDay(day: Day, title: String, descriptionRequestedChangeListener: String) {
-
-    }
-
 }

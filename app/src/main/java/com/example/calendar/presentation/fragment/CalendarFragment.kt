@@ -65,7 +65,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             setPositiveButton(R.string.create_task) { dialog, _ ->
                 val title = dialogViewBinding.taskTitle.text.toString()
                 val description = dialogViewBinding.taskDescription.text.toString()
-                calendarViewModel.createTaskForDay(day, title, description)
+//                calendarViewModel.createTaskForDay(day, title, description)
                 dialog.dismiss()
             }
             setNegativeButton(R.string.cancel) { dialog, _ ->
