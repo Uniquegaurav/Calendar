@@ -31,8 +31,18 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         val day = differ.currentList[position]
         holder.binding.apply {
             dayNumber.text = day.day
+            root.setOnClickListener {
+                onItemClickListener?.let { it(day) }
+            }
         }
     }
+
+    private var onItemClickListener : ((Day) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Day) -> Unit) {
+        onItemClickListener = listener
+    }
+
 
     private val differCallBack = object : DiffUtil.ItemCallback<Day>() {
         override fun areItemsTheSame(oldItem: Day, newItem: Day): Boolean {
