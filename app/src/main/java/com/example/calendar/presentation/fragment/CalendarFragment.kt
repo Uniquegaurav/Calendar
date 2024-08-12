@@ -87,8 +87,9 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
     }
 
     private fun updateCalendar() {
-        binding.currentMonth.text = Mapper.monthToString(calendarViewModel.currentMonth)
-        binding.currentYear.text = calendarViewModel.currentYear.toString()
+        val displayString =
+            Mapper.monthToString(calendarViewModel.currentMonth) + " " + calendarViewModel.currentYear.toString()
+        binding.currentMonthYear.text = displayString
         calendarAdapter.differ.submitList(
             calendarViewModel.getCalendarDays(
                 calendarViewModel.currentMonth,
