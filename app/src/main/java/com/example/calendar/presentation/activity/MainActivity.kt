@@ -21,5 +21,6 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.task_list_container, TaskListFragment())
                 .commit()
         }
+        setSupportActionBar(findViewById(R.id.toolbar))
     }
 }
